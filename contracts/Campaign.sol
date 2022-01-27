@@ -9,9 +9,16 @@ contract Campaign {
     address recipient;
     bool complete;
   }
+
+  Request[] public requests;
   address public manager;
   uint minimumContribution;
   address[] public approvers;
+
+  modifier restricted() {
+    require(msg.sender == manager);
+    _;
+  }
 
   constructor(uint minimum) {
     manager = msg.sender;
