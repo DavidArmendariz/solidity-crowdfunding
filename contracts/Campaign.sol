@@ -13,10 +13,11 @@ contract Campaign {
   }
 
   uint numRequests;
-  mapping(uint => Request) requests;
+  mapping(uint => Request) public requests;
 
   address public manager;
   uint minimumContribution;
+  
   mapping(address => bool) public contributors;
 
   modifier restricted() {
