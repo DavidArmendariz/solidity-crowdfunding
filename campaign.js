@@ -1,14 +1,14 @@
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 import solc from 'solc';
 
-const inboxPath = path.resolve(__dirname, 'contracts', 'Lottery.sol');
+const inboxPath = path.resolve(__dirname, 'contracts', 'Campaign.sol');
 const source = fs.readFileSync(inboxPath, 'utf8');
 
 const input = {
   language: 'Solidity',
   sources: {
-    lotteryContract: {
+    campaignContract: {
       content: source,
     },
   },
@@ -23,4 +23,4 @@ const input = {
 
 const compiledContract = JSON.parse(solc.compile(JSON.stringify(input)));
 
-export default compiledContract.contracts.lotteryContract.Lottery;
+export default compiledContract.contracts.campaignContract.Lottery;
