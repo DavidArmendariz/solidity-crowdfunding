@@ -55,3 +55,16 @@ test('it requires a minimum contribution', async () => {
 
   expect(error).toBeDefined();
 });
+
+test('it allows a manager to make a payment request', async () => {
+  await campaign.methods
+    .createRequest('test', 100, accounts[1])
+    .send({ from: accounts[0], gas: GAS });
+
+  const request = await campaign.methods.requests(0).call();
+  expect(request.description).toEqual('test');
+  expect(request.value).toEqual('100');
+  expect(request.recipient).toEqual(accounts[1]);
+  expect(request.complete).toEqual(false);
+  expect(request.approversCount).toEqual('0');
+});
