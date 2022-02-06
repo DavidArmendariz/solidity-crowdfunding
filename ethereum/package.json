@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "description": "Solidity project using solc, web3, ganache and other technologies",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.1",
@@ -16,7 +16,6 @@
     "web3": "^1.7.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
     "@types/jest": "^27.4.0",
     "ganache": "^7.0.0",

@@ -1,6 +1,5 @@
-import fse from 'fs-extra';
 import path from 'path';
-import solc from 'solc';
+import fse from 'fs-extra';
 
 console.log(path.resolve());
 // const buildPath = path.resolve(__dirname, 'build');
