@@ -68,3 +68,31 @@ test('it allows a manager to make a payment request', async () => {
   expect(request.complete).toEqual(false);
   expect(request.approversCount).toEqual('0');
 });
+
+test('it processes request', async () => {
+  await campaign.methods
+    .contribute()
+    .send({ from: accounts[0], value: web3.utils.toWei('10', 'ether') });
+
+  await campaign.methods
+    .createRequest('test', web3.utils.toWei('5', 'ether'), accounts[1])
+    .send({ from: accounts[0], gas: GAS });
+
+  await campaign.methods
+    .approveRequest(0)
+    .send({ from: accounts[0], gas: GAS });
+
+  let initialBalance = await web3.eth.getBalance(accounts[1]);
+  initialBalance = web3.utils.fromWei(initialBalance, 'ether');
+  initialBalance = parseFloat(initialBalance);
+
+  await campaign.methods
+    .finalizeRequest(0)
+    .send({ from: accounts[0], gas: GAS });
+
+  let finalBalance = await web3.eth.getBalance(accounts[1]);
+  finalBalance = web3.utils.fromWei(finalBalance, 'ether');
+  finalBalance = parseFloat(finalBalance);
+
+  expect(finalBalance - initialBalance).toBe(5);
+});
