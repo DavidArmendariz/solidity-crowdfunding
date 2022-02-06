@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import Web3 from 'web3';
-import CampaignFactory from './build/CampaignFactory.json';
+import fse from 'fs-extra';
 
 const provider = new HDWalletProvider(
   process.env.SEED_PHRASE,
@@ -9,6 +9,9 @@ const provider = new HDWalletProvider(
 );
 
 const web3 = new Web3(provider);
+
+const CampaignFactory = fse.readJSONSync('./build/CampaignFactory.json');
+const GAS = 1e7;
 
 const deploy = async () => {
   try {
@@ -20,7 +23,7 @@ const deploy = async () => {
       .deploy({
         data: CampaignFactory.evm.bytecode.object,
       })
-      .send({ gas: 1000000, from: accounts[0] });
+      .send({ gas: GAS, from: accounts[0] });
 
     console.log(
       `Contract ABI: ${JSON.stringify(CampaignFactory.abi, null, 2)}`
