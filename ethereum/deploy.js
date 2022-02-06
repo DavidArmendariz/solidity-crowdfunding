@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import Web3 from 'web3';
-import CampaignFactory from './build/CampaignFactory';
+import CampaignFactory from './build/CampaignFactory.json';
 
 const provider = new HDWalletProvider(
   process.env.SEED_PHRASE,
