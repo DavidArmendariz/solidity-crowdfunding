@@ -28,13 +28,19 @@ const input = {
   },
 };
 
+console.log('Compiling contract...');
 const compiledContract = solc.compile(JSON.stringify(input));
+console.log('Done.');
 const output = JSON.parse(compiledContract);
 const contracts = Object.entries(output.contracts.allContracts);
 
+console.log('Removing existing build folder...');
 fse.ensureDirSync(buildPath);
+console.log('Done.');
 
 contracts.forEach((contract) => {
   const [contractName, json] = contract;
+  console.log(`Writing ${contractName} JSON file to ${buildPath}...`);
   fse.outputJSONSync(path.resolve(buildPath, `${contractName}.json`), json);
+  console.log(`Done.`);
 });
