@@ -8,6 +8,7 @@
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.1",
     "dotenv": "^14.2.0",
+    "fs-extra": "^10.0.0",
     "solc": "^0.8.11",
     "web3": "^1.7.0"
   },
