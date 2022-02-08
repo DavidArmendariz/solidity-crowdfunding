@@ -1,4 +1,7 @@
 {
+  "compilerOptions": {
+    "noEmit": true
+  },
   "exclude": ["node_modules"],
   "typeAcquisition": {
     "include": ["jest"]
