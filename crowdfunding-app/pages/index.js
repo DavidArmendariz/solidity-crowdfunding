@@ -1,6 +1,13 @@
 import Head from 'next/head';
+import useFactory from '../hooks/factory';
+import useMetamask from '../hooks/metamask';
 
 export default function Home() {
+  const web3 = useMetamask();
+  const factory = useFactory(web3);
+
+  console.log(factory);
+
   return (
     <div>
       <Head>
