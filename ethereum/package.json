@@ -6,7 +6,8 @@
   "version": "1.0.0",
   "description": "Solidity project using solc, web3, ganache and other technologies",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "prettier:fix": "prettier --write ."
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.1",
@@ -19,6 +20,7 @@
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
     "@types/jest": "^27.4.0",
     "ganache": "^7.0.0",
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1"
   }
 }

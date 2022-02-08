@@ -1,7 +1,9 @@
-import 'dotenv/config';
 import HDWalletProvider from '@truffle/hdwallet-provider';
-import Web3 from 'web3';
+import dotenv from 'dotenv';
 import fse from 'fs-extra';
+import Web3 from 'web3';
+
+dotenv.config();
 
 const provider = new HDWalletProvider(
   process.env.SEED_PHRASE,
