@@ -1,3 +1,3 @@
 {
-  "eslint.workingDirectories": ["./crowdfunding-app", "./ethereum"]
+  "eslint.workingDirectories": ["./app", "./ethereum"]
 }
