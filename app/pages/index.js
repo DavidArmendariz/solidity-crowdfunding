@@ -1,21 +1,23 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 import factory from '../factory';
 
-export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const campaigns = await factory.methods.getDeployedCampaigns().call();
-    })();
-  }, []);
-
+const Home = ({ campaigns }) => {
   return (
     <div>
       <Head>
         <title>Crowdfunding App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      Hello
+      {campaigns.map((campaign) => (
+        <div key={campaign}>{campaign}</div>
+      ))}
     </div>
   );
-}
+};
+
+Home.getInitialProps = async () => {
+  const campaigns = await factory.methods.getDeployedCampaigns().call();
+  return { campaigns };
+};
+
+export default Home;
