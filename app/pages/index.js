@@ -1,12 +1,13 @@
 import Head from 'next/head';
-import useFactory from '../hooks/factory';
-import useMetamask from '../hooks/metamask';
+import { useEffect } from 'react';
+import factory from '../factory';
 
 export default function Home() {
-  const web3 = useMetamask();
-  const factory = useFactory(web3);
-
-  console.log(factory);
+  useEffect(() => {
+    (async () => {
+      const campaigns = await factory.methods.getDeployedCampaigns().call();
+    })();
+  }, []);
 
   return (
     <div>
