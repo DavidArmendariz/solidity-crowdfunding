@@ -20,8 +20,13 @@ const Home = ({ campaigns }) => {
         <title>Crowdfunding App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Button
+        floated="right"
+        content="Create Campaign"
+        icon="add circle"
+        primary
+      />
       {renderCampaigns()}
-      <Button content="Create Campaign" icon="add circle" primary />
     </Layout>
   );
 };
