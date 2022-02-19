@@ -1,7 +1,8 @@
 import Layout from 'components/Layout';
+import factory from 'factory';
 import Head from 'next/head';
+import { Router } from 'routes';
 import { Button, Card } from 'semantic-ui-react';
-import factory from '../factory';
 
 const Home = ({ campaigns }) => {
   const renderCampaigns = () => {
@@ -14,6 +15,10 @@ const Home = ({ campaigns }) => {
     return <Card.Group items={items} />;
   };
 
+  const createCampaign = () => {
+    Router.push('/campaigns/new');
+  };
+
   return (
     <Layout>
       <Head>
@@ -22,6 +27,7 @@ const Home = ({ campaigns }) => {
       </Head>
       <h3>Open Campaigns</h3>
       <Button
+        onClick={createCampaign}
         floated="right"
         content="Create Campaign"
         icon="add circle"

@@ -1,5 +1,5 @@
 import CampaignFactory from '../ethereum/build/CampaignFactory.json';
-import web3 from './web3';
+import web3 from './web3-instance';
 
 const factory = new web3.eth.Contract(
   CampaignFactory.abi,
