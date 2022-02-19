@@ -8,7 +8,11 @@ const Home = ({ campaigns }) => {
   const renderCampaigns = () => {
     const items = campaigns.map((campaign) => ({
       header: campaign,
-      description: <a>View Campaign</a>,
+      description: (
+        <Link route={`/campaigns/${campaign}`}>
+          <a>View Campaign</a>
+        </Link>
+      ),
       fluid: true,
     }));
 
