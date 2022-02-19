@@ -1,9 +1,9 @@
-import Layout from 'components/Layout';
+import Layout from 'app-components/Layout';
+import { Router } from 'app-routes';
+import campaignFactory from 'campaign-factory';
 import React, { useState } from 'react';
 import { Button, Form, Input, Message } from 'semantic-ui-react';
 import web3 from 'web3-instance';
-import factory from '../../factory';
-import { Router } from '../../routes';
 
 const CampaignNew = () => {
   const [minimumContribution, setMinimumContribution] = useState('0');
@@ -16,7 +16,7 @@ const CampaignNew = () => {
     setErrorMessage('');
     try {
       const accounts = await web3.eth.getAccounts();
-      await factory.methods
+      await campaignFactory.methods
         .createCampaign(minimumContribution)
         .send({ from: accounts[0] });
       Router.pushRoute('/');

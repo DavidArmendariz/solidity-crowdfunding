@@ -1,7 +1,7 @@
-import Layout from 'components/Layout';
-import factory from 'factory';
+import Layout from 'app-components/Layout';
+import { Link } from 'app-routes';
+import factory from 'campaign-factory';
 import Head from 'next/head';
-import { Router } from 'routes';
 import { Button, Card } from 'semantic-ui-react';
 
 const Home = ({ campaigns }) => {
@@ -15,10 +15,6 @@ const Home = ({ campaigns }) => {
     return <Card.Group items={items} />;
   };
 
-  const createCampaign = () => {
-    Router.push('/campaigns/new');
-  };
-
   return (
     <Layout>
       <Head>
@@ -26,13 +22,16 @@ const Home = ({ campaigns }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h3>Open Campaigns</h3>
-      <Button
-        onClick={createCampaign}
-        floated="right"
-        content="Create Campaign"
-        icon="add circle"
-        primary
-      />
+      <Link route="/campaigns/new">
+        <a>
+          <Button
+            floated="right"
+            content="Create Campaign"
+            icon="add circle"
+            primary
+          />
+        </a>
+      </Link>
       {renderCampaigns()}
     </Layout>
   );
