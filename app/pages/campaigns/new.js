@@ -2,6 +2,7 @@ import Layout from 'components/Layout';
 import React, { useState } from 'react';
 import { Button, Form, Input, Message } from 'semantic-ui-react';
 import factory from '../../factory';
+import { Router } from '../../routes';
 import web3 from '../../web3';
 
 const CampaignNew = () => {
@@ -18,6 +19,7 @@ const CampaignNew = () => {
       await factory.methods
         .createCampaign(minimumContribution)
         .send({ from: accounts[0] });
+      Router.pushRoute('/');
     } catch (err) {
       setErrorMessage(err.message);
     } finally {
