@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
+import ContributeForm from 'app-components/ContributeForm';
 import Layout from 'app-components/Layout';
 import getCampaign from 'app-utils/get-campaign';
 import web3 from 'app-web3';
@@ -52,7 +53,12 @@ const CampaignShow = ({
   return (
     <Layout>
       <h3>Campaign Details</h3>
-      {renderCards()}
+      <Grid>
+        <Grid.Column width={10}>{renderCards()}</Grid.Column>
+        <Grid.Column width={6}>
+          <ContributeForm />
+        </Grid.Column>
+      </Grid>
     </Layout>
   );
 };
