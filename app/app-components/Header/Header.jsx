@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Menu className={styles.headerMenu}>
       <Link route="/">
-        <a className={styles.headerLink}>CrowdCoin</a>
+        <a className={styles.headerLink}>Crowdfunding App</a>
       </Link>
       <Menu.Menu position="right">
         <Link route="/">
