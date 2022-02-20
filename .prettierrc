@@ -3,6 +3,6 @@
   "printWidth": 80,
   "singleQuote": true,
   "trailingComma": "es5",
-  "importOrder": ["<THIRD_PARTY_MODULES>", "^[./]"],
+  "importOrder": ["react", "<THIRD_PARTY_MODULES>", "^[./]"],
   "importOrderSortSpecifiers": true
 }

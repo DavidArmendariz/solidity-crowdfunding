@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
+import { Button, Form, Input, Message } from 'semantic-ui-react';
 import Layout from 'app-components/Layout';
 import { Router } from 'app-routes';
 import campaignFactory from 'campaign-factory';
-import React, { useState } from 'react';
-import { Button, Form, Input, Message } from 'semantic-ui-react';
 import web3 from 'web3-instance';
 
 const CampaignNew = () => {

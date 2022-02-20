@@ -1,6 +1,6 @@
-import { Link } from 'app-routes';
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
+import { Link } from 'app-routes';
 import styles from './Header.module.scss';
 
 const Header = () => {

@@ -1,8 +1,8 @@
+import { Button, Card } from 'semantic-ui-react';
 import Layout from 'app-components/Layout';
 import { Link } from 'app-routes';
 import factory from 'campaign-factory';
 import Head from 'next/head';
-import { Button, Card } from 'semantic-ui-react';
 
 const Home = ({ campaigns }) => {
   const renderCampaigns = () => {
