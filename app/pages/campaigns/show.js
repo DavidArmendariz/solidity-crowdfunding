@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Grid } from 'semantic-ui-react';
+import { Button, Card, Grid } from 'semantic-ui-react';
 import ContributeForm from 'app-components/ContributeForm';
 import Layout from 'app-components/Layout';
+import { Link } from 'app-routes';
 import getCampaign from 'app-utils/get-campaign';
 import web3 from 'app-web3';
 
@@ -55,7 +56,14 @@ const CampaignShow = ({
     <Layout>
       <h3>Campaign Details</h3>
       <Grid>
-        <Grid.Column width={10}>{renderCards()}</Grid.Column>
+        <Grid.Column width={10}>
+          {renderCards()}
+          <Link route={`/campaigns/${address}/requests`}>
+            <a>
+              <Button primary>View Requests</Button>
+            </a>
+          </Link>
+        </Grid.Column>
         <Grid.Column width={6}>
           <ContributeForm address={address} />
         </Grid.Column>
