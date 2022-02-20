@@ -7,7 +7,9 @@
   "description": "Solidity project using solc, web3, ganache and other technologies",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "compile": "node compile.js",
+    "deploy": "node deploy.js"
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.1",
