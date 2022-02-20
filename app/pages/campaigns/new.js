@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Button, Form, Input, Message } from 'semantic-ui-react';
 import Layout from 'app-components/Layout';
 import { Router } from 'app-routes';
+import web3 from 'app-web3';
 import campaignFactory from 'campaign-factory';
-import web3 from 'web3-instance';
 
 const CampaignNew = () => {
   const [minimumContribution, setMinimumContribution] = useState('0');
