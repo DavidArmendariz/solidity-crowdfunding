@@ -11,6 +11,7 @@ const CampaignShow = ({
   numRequests,
   contributorsCount,
   manager,
+  address,
 }) => {
   const renderCards = () => {
     const items = [
@@ -56,7 +57,7 @@ const CampaignShow = ({
       <Grid>
         <Grid.Column width={10}>{renderCards()}</Grid.Column>
         <Grid.Column width={6}>
-          <ContributeForm />
+          <ContributeForm address={address} />
         </Grid.Column>
       </Grid>
     </Layout>
@@ -75,6 +76,7 @@ CampaignShow.getInitialProps = async (props) => {
     numRequests: summary[2],
     contributorsCount: summary[3],
     manager: summary[4],
+    address,
   };
 };
 
