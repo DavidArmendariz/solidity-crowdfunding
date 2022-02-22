@@ -2,18 +2,38 @@ import React, { useState } from 'react';
 import { Button, Form, Input, Message } from 'semantic-ui-react';
 import Layout from 'app-components/Layout';
 import { Link, Router } from 'app-routes';
+import getCampaign from 'app-utils/get-campaign';
 import web3 from 'app-web3';
-import Campaign from '../../../../ethereum/build/Campaign.json';
 
 const NewRequest = ({ address }) => {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('0');
   const [recipient, setRecipient] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setErrorMessage('');
+    setLoading(true);
+    const campaign = getCampaign(address);
+    try {
+      const accounts = await web3.eth.getAccounts();
+      const wei = web3.utils.toWei(value, 'ether');
+      await campaign.methods
+        .createRequest(description, wei, recipient)
+        .send({ from: accounts[0] });
+    } catch (err) {
+      setErrorMessage(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Layout>
       <h3>Create a Request</h3>
-      <Form>
+      <Form onSubmit={onSubmit} error={!!errorMessage}>
         <Form.Field>
           <label>Description</label>
           <Input
@@ -35,7 +55,10 @@ const NewRequest = ({ address }) => {
             onChange={(event) => setRecipient(event.target.value)}
           />
         </Form.Field>
-        <Button primary>Create</Button>
+        <Message error content={errorMessage} />
+        <Button loading={loading} primary>
+          Create
+        </Button>
       </Form>
     </Layout>
   );
