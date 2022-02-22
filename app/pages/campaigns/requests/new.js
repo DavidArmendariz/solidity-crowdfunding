@@ -32,6 +32,9 @@ const NewRequest = ({ address }) => {
 
   return (
     <Layout>
+      <Link route={`/campaigns/${address}/requests`}>
+        <a>Back</a>
+      </Link>
       <h3>Create a Request</h3>
       <Form onSubmit={onSubmit} error={!!errorMessage}>
         <Form.Field>
@@ -55,7 +58,7 @@ const NewRequest = ({ address }) => {
             onChange={(event) => setRecipient(event.target.value)}
           />
         </Form.Field>
-        <Message error content={errorMessage} />
+        <Message error header="Oops!" content={errorMessage} />
         <Button loading={loading} primary>
           Create
         </Button>
